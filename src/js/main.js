@@ -51,4 +51,38 @@ $(document).ready(function () {
   $('.modal__close').on('click', function () {
     $('.overlay, #consultation, #thanks, #order').fadeOut();
   });
+
+  
+  function validateForms(form) {
+    $(form).validate({
+      rules: {
+        name: {
+          required: true,
+          minlength: 5
+        },
+        phone: "required",
+        email: {
+          required: true,
+          email: true
+        }
+      },
+      messages: {
+        name: {
+          required: "Пожалуста введите свое имя",
+          minlength: jQuery.validator.format("Ввидите минимум {0} символов")
+        },
+        phone: "Пожалуста введите свой телефон",
+        email: {
+          required: "Пожалуста введите свой EMAIL",
+          email: "Неправлельно введон EMAIL"
+        }
+      }
+    });
+  };
+
+  validateForms('#consultation-form');
+  validateForms('#consultation form');
+  validateForms('#order form');
+
+
 });
