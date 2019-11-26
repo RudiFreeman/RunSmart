@@ -31,5 +31,24 @@ $(document).ready(function () {
   toggleSlide('.catalog-item__back');
   toggleSlide('.catalog-item__link');
 
+  // MODAL
+  //.fadeOut() - анимирование срытие элемента
+  //.fadeIn() - анимирование открытие элемента
+  $('[data-modal=consultation]').on('click', function () {
+    $('.overlay, #consultation').fadeIn();
+  });
 
+  $('.button__mini').on('click', function () {
+    $('.overlay,  #order').fadeIn();
+  });
+
+  $('.button__mini').each(function (i) {
+    $(this).on('click', function () {
+      $('#order .modal__description').text($('.catalog-item__subtitle').eq(i).text())
+    })
+  })
+
+  $('.modal__close').on('click', function () {
+    $('.overlay, #consultation, #thanks, #order').fadeOut();
+  });
 });
